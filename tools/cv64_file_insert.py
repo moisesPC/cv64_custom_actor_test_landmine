@@ -87,4 +87,6 @@ if __name__ == "__main__":
 
 		checkArgsErrors()
 		main()
-	
+		
+		# CRC fixer
+subprocess.run(["./n64crc.exe", "./cv64_custom_actor_test.z64"])
