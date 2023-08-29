@@ -28,6 +28,8 @@ NOVL = tools/nOVL/novl
 ZAPD = tools/ZAPD.out
 # Python
 PYTHON = python3
+# crc
+CRC = ./n64crc
 # Patch programs
 PATCH = tools/cv64_file_insert.py
 MISC_PATCHES = tools/cv64_misc_patches.py
@@ -56,6 +58,7 @@ patch: $(OVERLAY_OUT)
 	$(PYTHON) $(PATCH) $(PATCH_ROM) $(BUILD)/$(OVERLAY_OUT).bin $(OVERLAY_INJECT_OFFSET) $(OVERLAY_FILE_ID)
 	$(PYTHON) $(PATCH) $(PATCH_ROM) $(BUILD)/$(MAP_NAME)/$(MAP_NAME).bin $(MAP_INJECT_OFFSET) $(MAP_FILE_ID)
 	$(PYTHON) $(MISC_PATCHES) $(PATCH_ROM)
+        $(CRC) $(PATCH_ROM)
 
 $(OVERLAY_OUT): $(ASSETS_NAME) $(MAP_NAME)
 	mkdir -p $(BUILD)
